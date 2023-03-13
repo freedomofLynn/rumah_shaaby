@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BarangRequest;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class BarangController extends Controller
      */
     public function index()
     {
-        //
+        $barang['data'] = Barang::all();
+        return view('')->with('barang');
     }
 
     /**
@@ -24,7 +26,8 @@ class BarangController extends Controller
      */
     public function create()
     {
-        //
+        $barang['data'] = Barang::all();
+        return view('')->with('barang');
     }
 
     /**
@@ -33,9 +36,12 @@ class BarangController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BarangRequest $request)
     {
-        //
+        $data = $request->all();
+        Barang::create($data);
+        return redirect()->back();
+
     }
 
     /**
@@ -57,7 +63,8 @@ class BarangController extends Controller
      */
     public function edit(Barang $barang)
     {
-        //
+        $barang['data'] = Barang::all();
+        return view('')->with('barang');
     }
 
     /**
@@ -67,9 +74,11 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Barang $barang)
+    public function update(BarangRequest $request, Barang $barang)
     {
-        //
+        $data = $request->all();
+        Barang::update($data);
+        return redirect()->back();
     }
 
     /**
