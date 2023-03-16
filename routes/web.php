@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::resource('/', BarangController::class);
+
+
+
+// Route::resource('/', BarangController::class);
+Route::resource('/', HomeController::class);
+
+Route::resource('/barang', BarangController::class);
