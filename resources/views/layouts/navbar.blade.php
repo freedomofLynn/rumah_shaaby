@@ -37,6 +37,8 @@
           <ul class="menu-content">
             <li><a href="{{ route('barang.index')}}" class="d-flex align-items-center" href="barang/index"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Basic">Barang</span></a>
             </li>
+            <li><a href="{{ route('transaksi.index')}}" class="d-flex align-items-center" href="barang/index"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Basic">Transaksi</span></a>
+            </li>
           </ul>
         </li>
       </ul>
