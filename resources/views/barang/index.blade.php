@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="content-body">
-    <!-- Ajax Sourced Server-side -->
+    {{-- <!-- Ajax Sourced Server-side -->
     <section id="ajax-datatable">
         <div class="row">
             <div class="col-12">
@@ -20,6 +20,14 @@
                                     <th>Office</th>
                                     <th>Start date</th>
                                     <th>Salary</th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                         </table>
@@ -145,7 +153,7 @@
             </div>
         </div>
     </section>
-    <!--/ Advanced Search -->
+    <!--/ Advanced Search --> --}}
 
     <!-- Responsive Datatable -->
     <section id="responsive-datatable">
@@ -153,38 +161,32 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header border-bottom">
-                        <h4 class="card-title">Responsive Datatable</h4>
+                        <h4 class="card-title">Data Table Barang</h4>
+                        <div class="align-items-center ms-auto"><a href="" class="btn btn-primary">Export</a></div>
                     </div>
                     <div class="card-datatable">
                         <table class="dt-responsive table">
                             <thead>
                                 <tr>
-                                    <th></th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Post</th>
-                                    <th>City</th>
-                                    <th>Date</th>
-                                    <th>Salary</th>
-                                    <th>Age</th>
-                                    <th>Experience</th>
+                                    <th>No</th>
+                                    <th>Kode</th>
+                                    <th>Harga Jual</th>
+                                    <th>Haga Beli</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
-                            <tfoot>
+                            <tbody>
                                 <tr>
-                                    <th></th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Post</th>
-                                    <th>City</th>
-                                    <th>Date</th>
-                                    <th>Salary</th>
-                                    <th>Age</th>
                                     <th>Experience</th>
-                                    <th>Status</th>
+                                    <th><form action="">
+                                        <div class="position-flex top-0 end-0">
+                                        <a href="" class="btn btn-info">Edit</a>
+                                    <button type="submit" class="btn btn-danger">Destroy</button></div></form></th>
                                 </tr>
-                            </tfoot>
+                            </tbody>
                         </table>
                     </div>
                 </div>
