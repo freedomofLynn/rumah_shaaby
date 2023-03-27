@@ -176,16 +176,23 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($data as $no => $item)
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Post</th>
-                                    <th>Experience</th>
-                                    <th><form action="">
-                                        <div class="position-flex top-0 end-0">
-                                        <a href="" class="btn btn-info">Edit</a>
-                                    <button type="submit" class="btn btn-danger">Destroy</button></div></form></th>
+                                        <th>{{$no+1}}</th>
+                                        <th>{{$item->barang_id}}</th>
+                                        <th>{{$item->harga_jual}}</th>
+                                        <th>{{$item->harga_beli}}</th>
+
+                                    <th>
+                                        <form action="">
+                                            <div class="position-flex top-0 end-0">
+                                                <a href="" class="btn btn-info">Edit</a>
+                                                <button type="submit" class="btn btn-danger">Destroy</button>
+                                            </div>
+                                        </form>
+                                    </th>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
