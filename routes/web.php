@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,4 +38,6 @@ Route::resource('/register', RegisterController::class);
 Route::resource('/forgot', ForgotPasswordController::class);
 
 Route::resource('/reset', ResetPasswordController::class);
+
+Route::resource('/report', ReportController::class);
 
