@@ -35,9 +35,11 @@
       <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
         <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Datatable">Datatable</span></a>
           <ul class="menu-content">
-            <li><a href="{{ route('barang.index')}}" class="d-flex align-items-center" href="barang/index"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Basic">Barang</span></a>
+            <li><a href="{{ route('barang.index')}}" class="d-flex align-items-center"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Basic">Barang</span></a>
             </li>
             <li><a href="{{ route('transaksi.index')}}" class="d-flex align-items-center" href="barang/index"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Basic">Transaksi</span></a>
+            </li>
+            <li><a href="{{ route('report.index')}}" class="d-flex align-items-center" href="barang/index"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Basic">Invoice</span></a>
             </li>
           </ul>
         </li>
