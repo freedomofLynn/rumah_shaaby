@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 
-class LoginController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,8 @@ class LoginController extends Controller
      */
     public function index()
     {
-        // if (Auth::check()) {
-        //     return redirect()->intended('home');
-        // }
-        return view('login.index');
+        $customer['data'] = Customer::all();
+        return view()->with($customer);
     }
 
     /**
@@ -28,7 +25,7 @@ class LoginController extends Controller
      */
     public function create()
     {
-        //
+        return view();
     }
 
     /**
@@ -39,50 +36,49 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        $credential = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required']
+        $validate = $request->validate([
+            'nama_depan' => 'required|max:50',
+            'nama_belakang' => 'required|max:50',
+            'alamat' => 'required',
+            'kodepos' => 'required',
+            'telepon' => 'required'
         ]);
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            $request->session()->regenerate();
-            return redirect()->intended('home');
-        }
-
-        return redirect()->back()->withErrors([
-            'email' => 'Email atau Password yang anda masukan salah!!!',
-        ]);
+        $customer = $request->all();
+        Customer::create($customer);
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Customer $customer)
     {
-        //
+        $data['customer'] = $customer->all();
+        return view('')->with($data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Customer $customer)
     {
-        //
+        $data['customer'] = Customer::findOrFail($customer->get('customer_id'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Customer $customer)
     {
         //
     }
@@ -90,17 +86,11 @@ class LoginController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Customer $customer)
     {
         //
-    }
-
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('login');
     }
 }

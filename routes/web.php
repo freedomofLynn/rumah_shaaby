@@ -25,13 +25,13 @@ use Illuminate\Support\Facades\Route;
 
 
 // Route::resource('/', BarangController::class);
-Route::resource('/', HomeController::class);
+// Route::resource('/', HomeController::class);
 
 Route::resource('/barang', BarangController::class);
 
 Route::resource('/transaksi', TransaksiController::class);
 
-Route::resource('/login', LoginController::class);
+Route::resource('/', LoginController::class);
 
 Route::resource('/register', RegisterController::class);
 
