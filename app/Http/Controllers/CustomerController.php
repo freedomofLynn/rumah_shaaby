@@ -43,13 +43,9 @@ class CustomerController extends Controller
             'kodepos' => 'required',
             'telepon' => 'required'
         ]);
-        $customer = new Customer;
-
-        $customer->firstname = $request->get('nama_depan');
-        $customer->lastname = $request->get('nama_belakang');
-        $customer->address = $request->get('alamat');
-        $customer->poscode = $request->get('kodepos');
-
+        $customer = $request->all();
+        Customer::create($customer);
+        return redirect()->back();
     }
 
     /**
@@ -60,7 +56,8 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        //
+        $data['customer'] = $customer->all();
+        return view('')->with($data);
     }
 
     /**
@@ -71,7 +68,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        $data['customer'] = Customer::findOrFail($customer->get('customer_id'));
     }
 
     /**

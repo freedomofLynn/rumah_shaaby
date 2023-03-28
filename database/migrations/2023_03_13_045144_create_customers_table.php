@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->uuid('customer_id')->primary();
+            $table->foreignId('user_id')->constrained();
             $table->string('firstname', 50);
             $table->string('lastname', 50);
             $table->text('address');
