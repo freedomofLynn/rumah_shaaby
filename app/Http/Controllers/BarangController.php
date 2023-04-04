@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BarangRequest;
 use App\Models\Barang;
+use Validator;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Imports\ImportBarang;
+use Illuminate\Support\Facades\Session;
+use Excel;
 
 class BarangController extends Controller
 {
@@ -90,5 +95,26 @@ class BarangController extends Controller
     public function destroy(Barang $barang)
     {
         //
+    }
+    public function import_barang(Request $request)
+    {
+        $validator = Validator::make(
+        [
+            'file'      => $request->file('file_barang'),
+            'extension' => strtolower($request->file('file_barang')->getClientOriginalExtension()),
+        ],
+        [
+            'file'          => 'required',
+            'extension'      => 'required|in:xlsx,xls',
+        ]);
+
+        if ($validator->fails()) {
+            Session::flash('error', $validator->errors());
+            return redirect()->route('barang.index');
+        }
+
+        Excel::import(new ImportBarang, $request->file('file_barang'));
+        Session::flash('status', 'Import Berhasil');
+        return redirect()->route('barang.index');
     }
 }

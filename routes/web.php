@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Http\Controllers\LoginController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -9,6 +9,7 @@ use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,17 +28,23 @@ use Illuminate\Support\Facades\Route;
 // Route::resource('/', BarangController::class);
 // Route::resource('/', HomeController::class);
 
-Route::resource('/barang', BarangController::class);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'store']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::resource('/transaksi', TransaksiController::class);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'register']);
 
-Route::resource('/', LoginController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('/barang', BarangController::class);
+    Route::post('/barang/import', [BarangController::class, 'import_barang'])->name('barang.import');
+    Route::resource('/report', ReportController::class);
+    Route::resource('/transaksi', TransaksiController::class);
+});
 
-Route::resource('/register', RegisterController::class);
 
-Route::resource('/forgot', ForgotPasswordController::class);
+// Route::resource('/forgot', ForgotPasswordController::class);
+// Route::resource('/reset', ResetPasswordController::class);
 
-Route::resource('/reset', ResetPasswordController::class);
 
-Route::resource('/report', ReportController::class);
 
