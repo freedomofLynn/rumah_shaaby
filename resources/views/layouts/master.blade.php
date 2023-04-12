@@ -36,6 +36,15 @@
     <link rel="stylesheet" type="text/css" href="{{asset('')}}rumah_shaaby/app-assets/css/plugins/extensions/ext-component-toastr.min.css">
     <!-- END: Page CSS-->
 
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ asset('rumah_shaaby/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('rumah_shaaby/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ asset('rumah_shaaby/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('')}}rumah_shaaby/assets/css/style.css">
     <!-- END: Custom CSS-->
