@@ -25,15 +25,20 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th><form action="">
-                                        <div class="position-flex top-0 end-0">
-                                        <a href="" class="btn btn-info">Edit</a>
-                                    <button type="submit" class="btn btn-danger">Destroy</button></div></form></th>
+                                    @foreach ($data as $no => $item)
+                                        <th>{{$no +1}}</th>
+                                        <th>{{$item->barang_id}}</th>
+                                        <th>{{$item->harga_barang}}</th>
+                                        <th>{{$item->total}}</th>
+                                    @endforeach
+                                   <th>
+                                        <form action="">
+                                            <div class="position-flex top-0 end-0">
+                                                <a href="" class="btn btn-info">Edit</a>
+                                                <button type="submit" class="btn btn-danger">Destroy</button>
+                                            </div>
+                                        </form>
+                                    </th>
                                 </tr>
                             </tbody>
                         </table>

@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Ramsey\Uuid\Doctrine\UuidColumn;
 
 return new class extends Migration
 {
@@ -14,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('barangs', function (Blueprint $table) {
-            $table->uuid('barang_id')->primary()->index();
-            $table->integer('harga_beli');
-            $table->integer('harga_jual');
+        Schema::create('transaksis', function (Blueprint $table) {
+            $table->uuid('id_transaksi');
+            $table->string('barang_id');
+            $table->integer('harga_barang');
+            $table->integer('total');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('barangs');
+        Schema::dropIfExists('transaksis');
     }
 };

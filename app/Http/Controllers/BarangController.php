@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Imports\ImportBarang;
 use Illuminate\Support\Facades\Session;
 use Excel;
+use Illuminate\Support\Str;
 
 class BarangController extends Controller
 {
@@ -20,8 +21,8 @@ class BarangController extends Controller
      */
     public function index()
     {
-        $barang['data'] = Barang::all();
-        return view('barang.index')->with($barang);
+        $data['barang'] = Barang::all();
+        return view('barang.index')->with($data);
     }
 
     /**
@@ -31,8 +32,9 @@ class BarangController extends Controller
      */
     public function create()
     {
-        $barang['data'] = Barang::all();
-        return view('')->with('barang');
+        $data['barang'] = Barang::all();
+        dd($data);
+        // return view('barang.create')->with($data);
     }
 
     /**
@@ -43,9 +45,10 @@ class BarangController extends Controller
      */
     public function store(BarangRequest $request)
     {
-        $data = $request->all();
-        Barang::create($data);
-        return redirect()->back();
+        $barang = $request->all();
+        $barang['id'] = (string) Str::orderedUuid();
+        Barang::create($barang);
+        return redirect()->route('barang.index');
 
     }
 
@@ -66,10 +69,10 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function edit(Barang $barang)
+    public function edit($id)
     {
-        $barang['data'] = Barang::all();
-        return view('')->with('barang');
+        $data['barang'] = Barang::find($id);
+        return view('barang.edit')->with($data);
     }
 
     /**
@@ -79,11 +82,12 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(BarangRequest $request, Barang $barang)
+    public function update(BarangRequest $request, $id)
     {
         $data = $request->all();
-        Barang::update($data);
-        return redirect()->back();
+        $item = Barang::findOrFail($id);
+        $item->update($data);
+        return redirect()->route('barang.index');
     }
 
     /**
@@ -92,9 +96,13 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Barang $barang)
+    public function destroy($id)
     {
-        //
+        $barang = Barang::findOrFail($id);
+        $barang->delete();
+        // barang::onlyTrashed()->findOrFail($id)->forceDelete();
+        Session::flash('status', 'Data Berhasil Dihapus');
+        return redirect()->route('barang.index');
     }
     public function import_barang(Request $request)
     {

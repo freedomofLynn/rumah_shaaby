@@ -19,6 +19,7 @@
                                 <div class="input-group-append"> --}}
                                     <button type="submit" class="btn btn-primary">Import</button>
                                 </div>
+                                <div class="align-items-center ms-auto"><a href="{{ route('barang.create') }}" class="btn btn-primary">Tambah</a></div>
                         </form>
                     </div>
                     <div class="card-datatable">
@@ -33,7 +34,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $no => $item)
+                                @foreach ($barang as $no => $item)
                                 <tr>
                                         <th>{{$no+1}}</th>
                                         <th>{{$item->barang_id}}</th>
@@ -41,9 +42,9 @@
                                         <th>{{$item->harga_beli}}</th>
 
                                     <th>
+                                        <a href="{{ route('barang.edit', $item->id) }}" class="btn btn-info">Edit</a>
                                         <form action="">
                                             <div class="position-flex top-0 end-0">
-                                                <a href="" class="btn btn-info">Edit</a>
                                                 <button type="submit" class="btn btn-danger">Destroy</button>
                                             </div>
                                         </form>
