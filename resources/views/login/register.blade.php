@@ -84,8 +84,12 @@
                                         <input type="text" class="form-control" id="register-username" name="username" placeholder="johndoe" aria-describedby="register-username" tabindex="1" autofocus />
                                     </div> --}}
                                     <div class="mb-1">
-                                        <label for="register-email" name="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="-mail" name="email" placeholder="john@example.com" aria-describedby="register-email" tabindex="2" />
+                                        <label for="register-username" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="register-username" name="register-username" placeholder="johndoe" aria-describedby="register-username" tabindex="1" autofocus />
+                                    </div>
+                                    <div class="mb-1">
+                                        <label for="register-email" class="form-label">Email</label>
+                                        <input type="text" class="form-control" id="register-email" name="register-email" placeholder="john@example.com" aria-describedby="register-email" tabindex="2" />
                                     </div>
 
                                     <div class="mb-1">
