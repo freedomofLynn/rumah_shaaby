@@ -43,7 +43,7 @@
 
                                 <form class="auth-register-form mt-2" action="index.html" method="POST">
                                     <div class="mb-1">
-                                        <label for="register-username" class="form-label">Username</label>
+                                        <label for="register-username" class="form-label">Nama</label>
                                         <input type="text" class="form-control" id="register-username" name="register-username" placeholder="johndoe" aria-describedby="register-username" tabindex="1" autofocus />
                                     </div>
                                     <div class="mb-1">
