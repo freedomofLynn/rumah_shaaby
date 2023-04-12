@@ -37,10 +37,10 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::resource('/barang', BarangController::class);
 Route::middleware(['auth'])->group(function () {
 
-    Route::post('/barang/import', [BarangController::class, 'import_barang'])->name('barang.import');
     Route::resource('/report', ReportController::class);
-    Route::resource('/transaksi', TransaksiController::class);
+    // Route::resource('/transaksi', TransaksiController::class);
 });
+Route::post('/barang/import', [BarangController::class, 'import_barang'])->name('barang.import');
 
 
 // Route::resource('/forgot', ForgotPasswordController::class);

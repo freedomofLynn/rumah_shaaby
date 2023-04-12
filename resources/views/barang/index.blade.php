@@ -30,6 +30,7 @@
                                     <th>Kode</th>
                                     <th>Harga Jual</th>
                                     <th>Haga Beli</th>
+                                    <th>QR Code</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -40,10 +41,15 @@
                                         <th>{{$item->barang_id}}</th>
                                         <th>{{$item->harga_jual}}</th>
                                         <th>{{$item->harga_beli}}</th>
+                                        <th>
+                                            <p>{{ QrCode::generate($item->barang_id) }}</p>
+                                        </th>
 
                                     <th>
-                                        {{-- <a href="{{ route('barang.edit', $item->id) }}" class="btn btn-info">Edit</a> --}}
-                                        <form action="">
+                                        <form method="post" action="{{route('barang.destroy', $item->barang_id)}}">
+                                            @method('delete')
+                                            @csrf
+                                            <a href="{{ route('barang.edit', $item->barang_id) }}" class="btn btn-info">Edit</a>
                                             <div class="position-flex top-0 end-0">
                                                 <button type="submit" class="btn btn-danger">Destroy</button>
                                             </div>
@@ -58,8 +64,5 @@
             </div>
         </div>
     </section>
-
-    <!--/ Responsive Datatable -->
-
 </div>
 @endsection

@@ -82,7 +82,7 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(BarangRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
         $item = Barang::findOrFail($id);

@@ -6,15 +6,15 @@
         <div class="row">
             <div class="col-12">
                 <h4 class="card-title">Data Table Barang</h4>
-                <form action="{{ route('barang.update', $barang->id) }}" method="POST">
+                <form action="{{ route('barang.update', $barang->barang_id) }}" method="POST">
                     @csrf
                     @method('put')
-                    <div class="row mb-3">
+                    {{-- <div class="row mb-3">
                         <label for="barang_id" class="col-sm-3 col-form-label">kode barang</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="barang_id" value="{{$barang->barang_id}}" id="barang_id" required>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row mb-3">
                         <label for="harga_beli" class="col-sm-3 col-form-label">harga beli</label>
                         <div class="col-sm-10">
