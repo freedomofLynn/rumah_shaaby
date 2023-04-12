@@ -24,9 +24,8 @@ class BarangRequest extends FormRequest
     public function rules()
     {
         return [
-            'barang_id' => ['required'],
-            'harga_barang' => ['required'],
-            'harga_jual' => ['required']
+            'harga_barang' => ['required', 'numeric'],
+            'harga_jual' => ['required', 'numeric']
         ];
     }
 }

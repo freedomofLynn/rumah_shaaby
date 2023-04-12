@@ -34,9 +34,9 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'register']);
-
+Route::resource('/barang', BarangController::class);
 Route::middleware(['auth'])->group(function () {
-    Route::resource('/barang', BarangController::class);
+
     Route::post('/barang/import', [BarangController::class, 'import_barang'])->name('barang.import');
     Route::resource('/report', ReportController::class);
     Route::resource('/transaksi', TransaksiController::class);

@@ -42,7 +42,7 @@
                                         <th>{{$item->harga_beli}}</th>
 
                                     <th>
-                                        <a href="{{ route('barang.edit', $item->id) }}" class="btn btn-info">Edit</a>
+                                        {{-- <a href="{{ route('barang.edit', $item->id) }}" class="btn btn-info">Edit</a> --}}
                                         <form action="">
                                             <div class="position-flex top-0 end-0">
                                                 <button type="submit" class="btn btn-danger">Destroy</button>

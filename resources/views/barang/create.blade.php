@@ -17,13 +17,13 @@
                     <div class="row mb-3">
                         <label for="harga_beli" class="col-sm-3 col-form-label">harga beli</label>
                         <div class="col-sm-10">
-                            <input type="" class="form-control" name="harga_beli" id="harga_beli" required>
+                            <input type="number" class="form-control" name="harga_beli" id="harga_beli" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="harga_jual" class="col-sm-3 col-form-label">harga jual</label>
                         <div class="col-sm-10">
-                            <input type="" class="form-control" name="harga_jual" id="harga_jual" required>
+                            <input type="number" class="form-control" name="harga_jual" id="harga_jual" required>
                         </div>
                     </div>
                     {{-- <label for="barang_id">Barang:</label>
@@ -32,7 +32,8 @@
                         <option value="{{ $barang->id }}">{{ $barang->barang_id }}</option>
                         @endforeach
                     </select> --}}
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    {{-- <button type="submit" class="btn btn-success">Submit</button> --}}
+                    <input type="submit" value="Submit" class="btn btn-success">
                 </form>
             </div>
         </div>

@@ -33,8 +33,8 @@ class BarangController extends Controller
     public function create()
     {
         $data['barang'] = Barang::all();
-        dd($data);
-        // return view('barang.create')->with($data);
+
+         return view('barang.create')->with($data);
     }
 
     /**
@@ -43,10 +43,10 @@ class BarangController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BarangRequest $request)
+    public function store(Request $request)
     {
         $barang = $request->all();
-        $barang['id'] = (string) Str::orderedUuid();
+        $barang['barang_id'] = (string) Str::orderedUuid();
         Barang::create($barang);
         return redirect()->route('barang.index');
 
